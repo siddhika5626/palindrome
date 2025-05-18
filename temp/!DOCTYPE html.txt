@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palindrome Number Checker</title>
+  <style>
+    body {
+      background-color: lavender;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #6a0dad;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #d8bfd8;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #dda0dd;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #4b0082;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Palindrome Checker</h1>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <br>
+    <button onclick="checkPalindrome()">Check</button>
+    <div class="result" id="resultBox"></div>
+  </div>
+
+  <script>
+    function checkPalindrome() {
+      const num = document.getElementById("numberInput").value;
+      const resultBox = document.getElementById("resultBox");
+
+      if (!num) {
+        resultBox.innerHTML = "Please enter a number.";
+        return;
+      }
+
+      const reversed = num.split('').reverse().join('');
+      const isPalindrome = num === reversed;
+      const digitCount = num.length;
+      const evenOdd = parseInt(num) % 2 === 0 ? "Even" : "Odd";
+
+      let message = `<strong>${num}</strong> is `;
+      message += isPalindrome ? "<span style='color:green;'>a Palindrome</span> ✅" : "<span style='color:red;'>not a Palindrome</span> ❌";
+      message += `<br>Digit Count: ${digitCount}`;
+      message += `<br>Type: ${evenOdd}`;
+
+      resultBox.innerHTML = message;
+    }
+  </script>
+</body>
+</html>
